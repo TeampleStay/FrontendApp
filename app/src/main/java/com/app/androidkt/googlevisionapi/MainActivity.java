@@ -276,7 +276,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     BatchAnnotateImagesResponse response = annotateRequest.execute();
                     //출력해보기1.
                     Log.d("superdroid","response"+response);
-                    return convertResponseToString(response);
+                    return convertResponseToString(response); //이게 스트링이며, 구글의 RESPONSE 가있다..
                 } catch (GoogleJsonResponseException e) {
                     Log.d(TAG, "failed to make API request because " + e.getContent());
                 } catch (IOException e) {
