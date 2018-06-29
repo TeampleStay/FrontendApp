@@ -50,8 +50,12 @@ import com.zhihu.matisse.filter.Filter;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -61,13 +65,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private static final String TAG = "MainActivity";
     private static final int RECORD_REQUEST_CODE = 101;
     private static final int CAMERA_REQUEST_CODE = 102;
+    private static final int REQUEST_CODE_CHOOSE =103;
     private static final int PERMISSION_REQUEST_CODE = 1;
     String[] PERMISSIONS = {"android.permission.READ_EXTERNAL_STORAGE","android.permission.WRITE_EXTERNAL_STORAGE"};
 
-    private static final String CLOUD_VISION_API_KEY = "AIzaSyC96_Hcl9HTqDRSSMRpBV0et3oNfmaN1Ms";
+    private static final String CLOUD_VISION_API_KEY = "AIzaSyAeP2k96spfX9dL22JWI0U3tAPeF3aAyAY";
 
     @BindView(R.id.takePicture)
     Button takePicture;
+
+    @BindView(R.id.selectPicture)
+    Button selectPicture;
 
     @BindView(R.id.imageProgress)
     ProgressBar imageUploadProgress;
@@ -82,6 +90,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     TextView visionAPIData;
     private Feature feature;
     private Bitmap bitmap;
+
+    public List<Uri> mSelected;
+    public List<Bitmap> selected_photos;
     //private String[] visionAPI = new String[]{"LANDMARK_DETECTION", "LOGO_DETECTION", "SAFE_SEARCH_DETECTION", "IMAGE_PROPERTIES", "LABEL_DETECTION"};
     private String[] visionAPI = new String[]{"LABEL_DETECTION"};
 
@@ -98,6 +109,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        mSelected = new ArrayList<>();
+        selected_photos = new ArrayList<>();
 
         feature = new Feature();
         feature.setType(visionAPI[0]);
@@ -108,12 +121,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerVisionAPI.setAdapter(dataAdapter);
 
-        takePicture.setOnClickListener(new View.OnClickListener() {
+
+
+        selectPicture.setOnClickListener(new View.OnClickListener(){ //사진고르기
+
             @Override
             public void onClick(View view) {
-//                takePictureFromCamera();
-//                Log.d("superdroid","phase1");
-//                takePictureFromCamera();
+                Log.d("superdroid","FAFA!");
                 requestNecessaryPermissions(PERMISSIONS);
                 Matisse.from(MainActivity.this)
                         .choose(MimeType.ofAll())
@@ -124,7 +138,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)
                         .thumbnailScale(0.85f)
                         .imageEngine(new MyGlideEngine())
-                        .forResult(23);
+                        .forResult(REQUEST_CODE_CHOOSE);
+            }
+        });
+
+
+        takePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                takePictureFromCamera();
             }
         });
     }
@@ -159,23 +181,32 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK) {
             bitmap = (Bitmap) data.getExtras().get("data"); //사진을 받아온다
             imageView.setImageBitmap(bitmap);//사진을 보여준다.
-
-
-
             callCloudVision(bitmap, feature);
         }
-        else
+        else if(requestCode == REQUEST_CODE_CHOOSE && resultCode == RESULT_OK)
         {
-            super.onActivityResult(requestCode, resultCode, data);
-            if (resultCode == RESULT_OK)
-            {
-                Uri imageUri = data.getData();
+            Log.d("superdroid","bbubu!");
+            mSelected = Matisse.obtainResult(data);
+            Log.d("Matisse","mSelected: "+ mSelected);
+
+            Log.d("superdroid","phasephase");
+            for(int i = 0 ; i < mSelected.size() ;i++) {
+                Log.d("superdroid","phphaphpah");
                 try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
-                } catch (IOException e) {
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), mSelected.get(i));
+                    selected_photos.add(bitmap);
+
+                    Log.d("superdroid","bitmap transformed Success!!");
+                }catch (Exception e){
+                    Log.d("superdroid","FaILED!");
                     e.printStackTrace();
                 }
             }
+           Log.d("superdroid",""+selected_photos.size());
+           /* for(int i = 0 ; i < selected_photos.size(); i++){
+              Log.d("superdroid","selected : "+ selected_photos.get(i).toString());
+            }*/
+
         }
     }
 
@@ -197,11 +228,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         featureList.add(feature);
 
         final List<AnnotateImageRequest> annotateImageRequests = new ArrayList<>();
-
+        //카메라에서 찍힌사진
         AnnotateImageRequest annotateImageReq = new AnnotateImageRequest();
         annotateImageReq.setFeatures(featureList);
         annotateImageReq.setImage(getImageEncodeImage(bitmap)); //bitmap:카메라에서 찍은사진
         annotateImageRequests.add(annotateImageReq);
+        //카메라가 아닌, selected 된 사진들로 리퀘스트
+
 
         AnnotateImageRequest annotateImageReq2 = new AnnotateImageRequest();
         annotateImageReq2.setFeatures(featureList);
