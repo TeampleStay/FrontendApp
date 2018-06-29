@@ -142,7 +142,7 @@
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
-        sha1="874a53fa9907f474db468ad0d6a5a692c450dfe9">
+        sha1="735234bf45d1e08c65d6d9063dfcd8da008cf4b5">
         <dex dex="C:\Users\Kyungyk\dev\Hackerton\FrontendApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_bb390146e711dc3ae53b9f92b3783e24bb63b3bc\classes.dex" />
     </item>
     <item

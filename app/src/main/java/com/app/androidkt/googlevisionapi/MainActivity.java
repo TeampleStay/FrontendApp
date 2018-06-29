@@ -43,6 +43,8 @@ import com.google.api.services.vision.v1.model.Feature;
 import com.google.api.services.vision.v1.model.Image;
 import com.google.api.services.vision.v1.model.ImageProperties;
 import com.google.api.services.vision.v1.model.SafeSearchAnnotation;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.engine.impl.GlideEngine;
@@ -206,7 +208,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
            /* for(int i = 0 ; i < selected_photos.size(); i++){
               Log.d("superdroid","selected : "+ selected_photos.get(i).toString());
             }*/
-
+// 여기서 이제 gcp 를 실행시켜야지. 비트맵 리스트를 넘겨줘야지.
         }
     }
 
@@ -235,21 +237,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         annotateImageRequests.add(annotateImageReq);
         //카메라가 아닌, selected 된 사진들로 리퀘스트
 
-
+/*
         AnnotateImageRequest annotateImageReq2 = new AnnotateImageRequest();
         annotateImageReq2.setFeatures(featureList);
         annotateImageReq2.setImage(getImageEncodeImage(bitmap)); //bitmap:카메라에서 찍은사진
-        annotateImageRequests.add(annotateImageReq2);
+        annotateImageRequests.add(annotateImageReq2);*/
 
 
         Log.d("superdroid","phase2");
 
 
-/*
-
-        BatchAnnotateImagesRequest batchAnnotateImagesRequest;
-        batchAnnotateImagesRequest.set()
-*/
 
 
 
@@ -288,6 +285,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             protected void onPostExecute(String result) {
                 visionAPIData.setText(result);
                 imageUploadProgress.setVisibility(View.INVISIBLE);
+
+                Intent myIntent = new Intent(MainActivity.this,PostActivity.class);
+                myIntent.putExtra("JSON_STR",result);
+                startActivity(myIntent);
+
             }
         }.execute();
     }
@@ -361,17 +363,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private String formatAnnotation(List<EntityAnnotation> entityAnnotation) {
-        String message = "";
+        Gson gson = new Gson();
+        JsonObject msgobject = new JsonObject();
+        String json;
 
         if (entityAnnotation != null) {
             for (EntityAnnotation entity : entityAnnotation) {
-                message = message + "    " + entity.getDescription() + " " + entity.getScore();
-                message += "\n";
+                msgobject.addProperty(entity.getDescription(), entity.getScore());
             }
+            json = gson.toJson(msgobject);
         } else {
-            message = "Nothing Found";
+            json = null;
         }
-        return message;
+        return json;
     }
 
     @Override

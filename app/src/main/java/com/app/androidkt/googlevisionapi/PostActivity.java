@@ -1,9 +1,14 @@
 package com.app.androidkt.googlevisionapi;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+
+import com.google.gson.JsonObject;
+
+import org.json.JSONObject;
 
 import java.io.BufferedOutputStream;
 import java.io.InputStream;
@@ -21,27 +26,24 @@ public class PostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
 
+        Intent myintent2 = getIntent();
+        String json_str = myintent2.getStringExtra("JSON_STR");
+
+        if(json_str == null){
+            Log.d("superdroid","json_str is NULL!!");
+        }
 
         String my_url = "http://52.78.159.170:3000/recommand/music";// Replace this with your own url
         //String my_data = "Hello my First Request Without any library";
-        String json = "{\"light\":1,\"bright\":1,\"refreshing\":1}";
-        String my_data = json;
+        //String json = "{\"light\":1,\"bright\":1,\"refreshing\":1}";
 
 
-  /*      try {
 
-            JSONObject obj = new JSONObject(json);
 
-            Log.d("My App", obj.toString());
-
-        } catch (Throwable t) {
-            Log.e("My App", "Could not parse malformed JSON: \"" + json + "\"");
-        }
-*/
         Log.d("superdroid","here 1");
 
 
-        new MyHttpRequestTask().execute(my_url,my_data);
+        new MyHttpRequestTask().execute(my_url,json_str);
         Log.d("superdroid","here 2");
 
     }
@@ -55,9 +57,33 @@ public class PostActivity extends AppCompatActivity {
         }
 
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
         protected String doInBackground(String... params) {
             String my_url = params[0];
             String my_data = params[1];
+            Log.d("superdroid",my_data);
+            //JSONObject obj=null;
+
+
+            // mydata - > myjson(REAL JSONOBJECT)
+
+            /*try {
+
+                obj = new JSONObject(my_data);
+
+                Log.d("My App", obj.toString());
+
+            } catch (Throwable t) {
+                Log.e("My App", "Could not parse malformed JSON: \"" + my_data + "\"");
+            }
+*/
+
+
+
             try {
                 Log.d("superdroid","here 1");
                 URL url = new URL(my_url);
