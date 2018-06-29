@@ -7,9 +7,9 @@ The smartphone has a built-in function that collects pictures together with spec
 It recommends music by labeling each photo using google vision api and analyzing its features.
 
 ## Demo
-| Main |  |  |  |  |
+| Main | Select | Result | Random | Restart |
 | --- | --- | --- | --- | --- |
-| ![Main page](assets/main.png) | ![2 page](assets/select.png) | ![3 page](assets/result video.png) | ![4 Page](assets/random.png) | ![5 page](assets/restart.png) |
+| ![Main page](assets/main.png) | ![2 page](assets/select.png) | ![3 page](assets/video.png) | ![4 Page](assets/random.png) | ![5 page](assets/restart.png) |
 
 [Presentation video]()
 
