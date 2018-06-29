@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, visionAPI);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerVisionAPI.setAdapter(dataAdapter);
-
+        spinnerVisionAPI.setVisibility(View.INVISIBLE);
 
 
         selectPicture.setOnClickListener(new View.OnClickListener(){ //사진고르기
@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     e.printStackTrace();
                 }
             }
-           Log.d("superdroid",""+selected_photos.size());
+            Log.d("superdroid",""+selected_photos.size());
            /* for(int i = 0 ; i < selected_photos.size(); i++){
               Log.d("superdroid","selected : "+ selected_photos.get(i).toString());
             }*/
@@ -242,7 +242,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         annotateImageRequests.add(annotateImageReq2);
 
 
-    Log.d("superdroid","phase2");
+        Log.d("superdroid","phase2");
 
 
 /*
