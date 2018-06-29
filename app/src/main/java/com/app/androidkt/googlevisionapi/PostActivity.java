@@ -6,10 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.google.gson.JsonObject;
-
-import org.json.JSONObject;
-
 import java.io.BufferedOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -20,7 +16,7 @@ import java.net.URL;
 
 
 public class PostActivity extends AppCompatActivity {
-
+    String actualOutput = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,15 +36,15 @@ public class PostActivity extends AppCompatActivity {
 
 
 
-        Log.d("superdroid","here 1");
+        Log.d("seolhee","here 1");
 
 
         new MyHttpRequestTask().execute(my_url,json_str);
-        Log.d("superdroid","here 2");
+
 
     }
 
-    private class MyHttpRequestTask extends AsyncTask<String,Integer,String> {
+    public class MyHttpRequestTask extends AsyncTask<String,Integer,String> {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
@@ -65,7 +61,7 @@ public class PostActivity extends AppCompatActivity {
         protected String doInBackground(String... params) {
             String my_url = params[0];
             String my_data = params[1];
-            Log.d("superdroid",my_data);
+            Log.d("seolhee",my_data);
             //JSONObject obj=null;
 
 
@@ -85,7 +81,7 @@ public class PostActivity extends AppCompatActivity {
 
 
             try {
-                Log.d("superdroid","here 1");
+                Log.d("seolhee","here 3");
                 URL url = new URL(my_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 // setting the  Request Method Type
@@ -116,22 +112,31 @@ public class PostActivity extends AppCompatActivity {
                         httpURLConnection.setDoOutput(true);
                         httpURLConnection.setDoInput(true);
                         httpURLConnection.setChunkedStreamingMode(0);
-
+                        Log.d("seolhee","here 4");
                         OutputStream outputStream = new BufferedOutputStream(httpURLConnection.getOutputStream());
                         OutputStreamWriter streamWriter = new OutputStreamWriter(outputStream);
+                        Log.d("seolhee","here 5");
                         streamWriter.write(my_data);
+                        Log.d("seolhee","here 6");
                         streamWriter.flush();
                         streamWriter.close();
-
-                        int status = httpURLConnection.getResponseCode();
+                        int status=0;
+                        try {
+                            status = httpURLConnection.getResponseCode();
+                        }catch(Exception e){
+                            Log.d("seolhee","here 7");
+                            e.printStackTrace();
+                        }
                         if (status == 200){
                             InputStream in = httpURLConnection.getInputStream();
 
                             InputStreamReader inputStreamReader = new InputStreamReader(in);
 
                             int dataToRead = inputStreamReader.read();
-                            String actualOutput = "";
+                            Log.d("seolhee","here 8");
+
                             while (dataToRead != -1) {
+                                Log.d("seolhee","not ending ...");
                                 char current = (char) dataToRead;
                                 dataToRead = inputStreamReader.read();
                                 actualOutput = actualOutput + current;
@@ -142,11 +147,18 @@ public class PostActivity extends AppCompatActivity {
                         Log.d("superduper", "MyHttpRequestTask doInBackground : " +httpURLConnection.getResponseCode());
                         Log.d("superduper", "MyHttpRequestTask doInBackground : " +httpURLConnection.getResponseMessage());
 
+
+                        //Go to MP3Download Page
+                       /* Intent newIntent = new Intent(PostActivity.this, MP3Download.class);
+                        newIntent.putExtra("URI_STR",actualOutput);
+                        startActivity(newIntent);*/
+
                 }catch (Exception e){
                     e.printStackTrace();
                 }finally {
                     // this is done so that there are no open connections left when this task is going to complete
                     httpURLConnection.disconnect();
+
                 }
 
 

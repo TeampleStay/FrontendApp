@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -93,8 +94,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private Feature feature;
     private Bitmap bitmap;
 
+    private int cnt;
+
     public List<Uri> mSelected;
-    public List<Bitmap> selected_photos;
+
     //private String[] visionAPI = new String[]{"LANDMARK_DETECTION", "LOGO_DETECTION", "SAFE_SEARCH_DETECTION", "IMAGE_PROPERTIES", "LABEL_DETECTION"};
     private String[] visionAPI = new String[]{"LABEL_DETECTION"};
 
@@ -112,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         mSelected = new ArrayList<>();
-        selected_photos = new ArrayList<>();
+
 
         feature = new Feature();
         feature.setType(visionAPI[0]);
@@ -180,10 +183,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     protected void onActivityResult(int requestCode, int resultCode,
                                     Intent data) {
+        //비트맵리스트를 만든다
+        List<Bitmap>bitmaps = new ArrayList<>();
+
         if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK) {
             bitmap = (Bitmap) data.getExtras().get("data"); //사진을 받아온다
             imageView.setImageBitmap(bitmap);//사진을 보여준다.
-            callCloudVision(bitmap, feature);
+
+            //1개의 비트맵으로 비트맵리스트에 넣어준다
+            //비트맵리스트를 만든다
+            bitmaps.add(bitmap);
+            callCloudVision(bitmaps, feature);
+
+            cnt = 1;
         }
         else if(requestCode == REQUEST_CODE_CHOOSE && resultCode == RESULT_OK)
         {
@@ -196,19 +208,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 Log.d("superdroid","phphaphpah");
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), mSelected.get(i));
-                    selected_photos.add(bitmap);
-
+                    bitmaps.add(bitmap);
                     Log.d("superdroid","bitmap transformed Success!!");
                 }catch (Exception e){
                     Log.d("superdroid","FaILED!");
                     e.printStackTrace();
                 }
             }
-            Log.d("superdroid",""+selected_photos.size());
+            cnt = bitmaps.size();
+            Log.d("superdroid",""+bitmaps.size());
            /* for(int i = 0 ; i < selected_photos.size(); i++){
               Log.d("superdroid","selected : "+ selected_photos.get(i).toString());
             }*/
 // 여기서 이제 gcp 를 실행시켜야지. 비트맵 리스트를 넘겨줘야지.
+            callCloudVision(bitmaps, feature);
         }
     }
 
@@ -224,18 +237,30 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
-    private void callCloudVision(final Bitmap bitmap, final Feature feature) {
+    private void callCloudVision(final List<Bitmap> bitmaps, final Feature feature) {
         imageUploadProgress.setVisibility(View.VISIBLE);
         final List<Feature> featureList = new ArrayList<>();
         featureList.add(feature);
 
         final List<AnnotateImageRequest> annotateImageRequests = new ArrayList<>();
-        //카메라에서 찍힌사진
+     /*   //카메라에서 찍힌사진
         AnnotateImageRequest annotateImageReq = new AnnotateImageRequest();
         annotateImageReq.setFeatures(featureList);
         annotateImageReq.setImage(getImageEncodeImage(bitmap)); //bitmap:카메라에서 찍은사진
         annotateImageRequests.add(annotateImageReq);
         //카메라가 아닌, selected 된 사진들로 리퀘스트
+        Log.d("seolhee","phase1");
+        Bitmap bitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.us);
+        annotateImageReq.setImage(getImageEncodeImage(bitmap1)); //set as us.jpg
+        annotateImageRequests.add(annotateImageReq);
+
+*/
+     for(int i =0 ; i<bitmaps.size(); i++){
+         AnnotateImageRequest annotateImageReq = new AnnotateImageRequest();
+         annotateImageReq.setFeatures(featureList);
+         annotateImageReq.setImage(getImageEncodeImage(bitmaps.get(i))); //bitmap:카메라에서 찍은사진
+         annotateImageRequests.add(annotateImageReq);
+     }
 
 /*
         AnnotateImageRequest annotateImageReq2 = new AnnotateImageRequest();
@@ -244,7 +269,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         annotateImageRequests.add(annotateImageReq2);*/
 
 
-        Log.d("superdroid","phase2");
+        Log.d("seolhee","phase2");
 
 
 
@@ -371,6 +396,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             for (EntityAnnotation entity : entityAnnotation) {
                 msgobject.addProperty(entity.getDescription(), entity.getScore());
             }
+            msgobject.addProperty("cnt", cnt);
             json = gson.toJson(msgobject);
         } else {
             json = null;
@@ -382,8 +408,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         api = (String) adapterView.getItemAtPosition(i);
         feature.setType(api);
-        if (bitmap != null)
-            callCloudVision(bitmap, feature);
+        if (bitmap != null){
+            Log.d("seolhee","if you see this message ,there could be bugs");
+        }
+            //callCloudVision(bitmaps, feature);
     }
 
     @Override

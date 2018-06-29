@@ -15,10 +15,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/MP3DownloadTest.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/MP3Download.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/MainActivity.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/PostActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/PostActivity.java" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -44,16 +43,16 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="225" column="0" lean-forward="true" selection-start-line="225" selection-start-column="0" selection-end-line="225" selection-end-column="0" />
+            <state relative-caret-position="142">
+              <caret line="293" column="42" lean-forward="true" selection-start-line="293" selection-start-column="42" selection-end-line="293" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4585#4593#0" expanded="true" />
-                <element signature="e#4891#5751#0" expanded="true" />
-                <element signature="e#5410#5474#0" expanded="true" />
-                <element signature="e#5750#5751#0" expanded="true" />
-                <element signature="e#5795#5955#0" expanded="true" />
-                <element signature="e#5954#5955#0" expanded="true" />
+                <element signature="e#4562#4570#0" expanded="true" />
+                <element signature="e#4868#5728#0" expanded="true" />
+                <element signature="e#5387#5451#0" expanded="true" />
+                <element signature="e#5727#5728#0" expanded="true" />
+                <element signature="e#5772#5932#0" expanded="true" />
+                <element signature="e#5931#5932#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -62,11 +61,11 @@
       <file leaf-file-name="PostActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/PostActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1104">
-              <caret line="67" column="40" lean-forward="false" selection-start-line="67" selection-start-column="40" selection-end-line="67" selection-end-column="40" />
+            <state relative-caret-position="1357">
+              <caret line="152" column="50" lean-forward="false" selection-start-line="152" selection-start-column="50" selection-end-line="152" selection-end-column="50" />
               <folding>
-                <element signature="e#1609#1610#0" expanded="true" />
-                <element signature="e#1653#1654#0" expanded="true" />
+                <element signature="e#1532#1533#0" expanded="true" />
+                <element signature="e#1576#1577#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -75,7 +74,7 @@
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
+            <state relative-caret-position="506">
               <caret line="22" column="28" lean-forward="false" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
               <folding />
             </state>
@@ -108,32 +107,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="47" column="37" lean-forward="false" selection-start-line="47" selection-start-column="37" selection-end-line="47" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_mp3_download_test.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_mp3_download_test.xml">
-          <provider selected="true" editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MyGlideEngine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/MyGlideEngine.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -147,18 +120,18 @@
       <file leaf-file-name="PackageManagerUtils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/PackageManagerUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-221">
+            <state relative-caret-position="46">
               <caret line="16" column="6" lean-forward="false" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MP3DownloadTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/MP3DownloadTest.java">
+      <file leaf-file-name="MP3Download.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/MP3Download.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="256" column="73" lean-forward="false" selection-start-line="256" selection-start-column="73" selection-end-line="256" selection-end-column="73" />
+            <state relative-caret-position="344">
+              <caret line="90" column="0" lean-forward="true" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -168,25 +141,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>annotateImagerequest</find>
-      <find>callClo</find>
-      <find>onItem</find>
-      <find>onItemSelected</find>
-      <find>label_De</find>
-      <find>LABEL_DE</find>
-      <find>spinnerVisionAPI</find>
-      <find>itemselected</find>
-      <find>spinner</find>
-      <find>takepicture</find>
-      <find>imageUpload</find>
-      <find>sele</find>
-      <find>setvisi</find>
       <find>result</find>
       <find>convertresponse</find>
       <find>asynctask</find>
       <find>camera</find>
       <find>callcloud</find>
-      <find>request</find>
       <find>super</find>
       <find>Bitmap</find>
       <find>format</find>
@@ -194,10 +153,24 @@
       <find>conver</find>
       <find>my_url</find>
       <find>json</find>
-      <find>superdroid</find>
-      <find>NULL!</find>
       <find>vision</find>
       <find>callCloud</find>
+      <find>jpeg</find>
+      <find>getImageEncodeImage</find>
+      <find>bitmaps</find>
+      <find>feature</find>
+      <find>onItem</find>
+      <find>seolh</find>
+      <find>http</find>
+      <find>superdroid</find>
+      <find>cnt</find>
+      <find>request</find>
+      <find>here 8</find>
+      <find>seolhee</find>
+      <find>superdro</find>
+      <find>superdu</find>
+      <find>NULL!</find>
+      <find>DownloadFilesTask</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2202,8 +2175,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/MP3Download.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/PostActivity.java" />
       </list>
     </option>
@@ -2263,6 +2237,12 @@
               <item name="FrontendApp" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="drawable" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="FrontendApp" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
               <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
             <path>
@@ -2283,7 +2263,7 @@
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="sync.plugin.last.upgrade.timestamp" value="1530270962236" />
-    <property name="device.picker.selection" value="Nexus_5X_API_26" />
+    <property name="device.picker.selection" value="ce10160a2adce02a03" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
   </component>
@@ -2501,12 +2481,12 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33880422" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3985932" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28249195" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4021102" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2602579" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -2540,12 +2520,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4585#4593#0" expanded="true" />
-            <element signature="e#4891#5751#0" expanded="true" />
-            <element signature="e#5410#5474#0" expanded="true" />
-            <element signature="e#5750#5751#0" expanded="true" />
-            <element signature="e#5795#5955#0" expanded="true" />
-            <element signature="e#5954#5955#0" expanded="true" />
+            <element signature="e#4562#4570#0" expanded="true" />
+            <element signature="e#4868#5728#0" expanded="true" />
+            <element signature="e#5387#5451#0" expanded="true" />
+            <element signature="e#5727#5728#0" expanded="true" />
+            <element signature="e#5772#5932#0" expanded="true" />
+            <element signature="e#5931#5932#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2599,6 +2579,67 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/us.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="22" column="28" lean-forward="false" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-26/android.jar!/java/net/URLConnection.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="129" column="24" lean-forward="false" selection-start-line="129" selection-start-column="24" selection-end-line="129" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-26/android.jar!/java/net/HttpURLConnection.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2071">
+          <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding>
+            <marker date="1506936608812" expanded="false" signature="0:104" ph="/.../" />
+            <marker date="1506936608812" expanded="false" signature="132:213" ph="..." />
+            <marker date="1506936608812" expanded="true" signature="1837:1855" ph="/**...*/" />
+            <marker date="1506936608812" expanded="true" signature="2483:2561" ph="{...}" />
+            <marker date="1506936608812" expanded="false" signature="2605:2616" ph=" { " />
+            <marker date="1506936608812" expanded="false" signature="2652:2658" ph=" }" />
+            <marker date="1506936608812" expanded="true" signature="2723:2775" ph="{...}" />
+            <marker date="1506936608812" expanded="true" signature="2841:2893" ph="{...}" />
+            <marker date="1506936608812" expanded="false" signature="2948:2959" ph=" { " />
+            <marker date="1506936608812" expanded="false" signature="2995:3001" ph=" }" />
+            <marker date="1506936608812" expanded="false" signature="3042:3053" ph=" { " />
+            <marker date="1506936608812" expanded="false" signature="3089:3095" ph=" }" />
+            <marker date="1506936608812" expanded="false" signature="3151:3162" ph=" { " />
+            <marker date="1506936608812" expanded="false" signature="3198:3204" ph=" }" />
+            <marker date="1506936608812" expanded="false" signature="3252:3263" ph=" { " />
+            <marker date="1506936608812" expanded="false" signature="3299:3305" ph=" }" />
+            <marker date="1506936608812" expanded="true" signature="3375:3427" ph="{...}" />
+            <marker date="1506936608812" expanded="false" signature="3476:3487" ph=" { " />
+            <marker date="1506936608812" expanded="false" signature="3523:3529" ph=" }" />
+            <marker date="1506936608812" expanded="true" signature="3604:3656" ph="{...}" />
+            <marker date="1506936608812" expanded="false" signature="3694:3705" ph=" { " />
+            <marker date="1506936608812" expanded="false" signature="3741:3747" ph=" }" />
+            <marker date="1506936608812" expanded="true" signature="3801:3853" ph="{...}" />
+            <marker date="1506936608812" expanded="true" signature="3913:3965" ph="{...}" />
+            <marker date="1506936608812" expanded="true" signature="4029:4081" ph="{...}" />
+            <marker date="1506936608812" expanded="true" signature="4223:4275" ph="{...}" />
+            <marker date="1506936608812" expanded="false" signature="4316:4327" ph=" { " />
+            <marker date="1506936608812" expanded="false" signature="4363:4369" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/MyGlideEngine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="235">
@@ -2607,11 +2648,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/MP3DownloadTest.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/PackageManagerUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="256" column="73" lean-forward="false" selection-start-line="256" selection-start-column="73" selection-end-line="256" selection-end-column="73" />
+        <state relative-caret-position="46">
+          <caret line="16" column="6" lean-forward="false" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/PostActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1357">
+          <caret line="152" column="50" lean-forward="false" selection-start-line="152" selection-start-column="50" selection-end-line="152" selection-end-column="50" />
+          <folding>
+            <element signature="e#1532#1533#0" expanded="true" />
+            <element signature="e#1576#1577#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2623,48 +2675,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/PackageManagerUtils.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/MP3Download.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-221">
-          <caret line="16" column="6" lean-forward="false" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+        <state relative-caret-position="344">
+          <caret line="90" column="0" lean-forward="true" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="22" column="28" lean-forward="false" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/PostActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1104">
-          <caret line="67" column="40" lean-forward="false" selection-start-line="67" selection-start-column="40" selection-end-line="67" selection-end-column="40" />
-          <folding>
-            <element signature="e#1609#1610#0" expanded="true" />
-            <element signature="e#1653#1654#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/androidkt/googlevisionapi/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="225" column="0" lean-forward="true" selection-start-line="225" selection-start-column="0" selection-end-line="225" selection-end-column="0" />
+        <state relative-caret-position="142">
+          <caret line="293" column="42" lean-forward="true" selection-start-line="293" selection-start-column="42" selection-end-line="293" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4585#4593#0" expanded="true" />
-            <element signature="e#4891#5751#0" expanded="true" />
-            <element signature="e#5410#5474#0" expanded="true" />
-            <element signature="e#5750#5751#0" expanded="true" />
-            <element signature="e#5795#5955#0" expanded="true" />
-            <element signature="e#5954#5955#0" expanded="true" />
+            <element signature="e#4562#4570#0" expanded="true" />
+            <element signature="e#4868#5728#0" expanded="true" />
+            <element signature="e#5387#5451#0" expanded="true" />
+            <element signature="e#5727#5728#0" expanded="true" />
+            <element signature="e#5772#5932#0" expanded="true" />
+            <element signature="e#5931#5932#0" expanded="true" />
           </folding>
         </state>
       </provider>
