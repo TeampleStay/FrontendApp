@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">GoogleVisionAPI</string>
     <string name="error_gif">x 나 y의 크기는 %1$dpx 이상, 파일 크기는 %2$sM 이하여야 합니다.</string>
+    <string name="todo">TODO</string>
 </resources>

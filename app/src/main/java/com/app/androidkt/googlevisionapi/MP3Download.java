@@ -16,7 +16,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.MediaController;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -30,11 +32,14 @@ import java.net.URLConnection;
 public class MP3Download extends AppCompatActivity {
 
     private ProgressDialog progressBar;
+    Intent myIntent;
 
     static final int PERMISSION_REQUEST_CODE = 1;
     String[] PERMISSIONS = {"android.permission.READ_EXTERNAL_STORAGE","android.permission.WRITE_EXTERNAL_STORAGE"};
     private File outputFile; //파일명까지 포함한 경로
     private File path;//디렉토리경로
+    String filename= null;
+    VideoView vv;
 
     private boolean hasPermissions(String[] permissions) {
         int res = 0;
@@ -63,7 +68,7 @@ public class MP3Download extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mp3_download_test);
+        setContentView(R.layout.activity_mp3_download);
 
 
         if (!hasPermissions(PERMISSIONS)) { //퍼미션 허가를 했었는지 여부를 확인
@@ -72,21 +77,28 @@ public class MP3Download extends AppCompatActivity {
             //이미 사용자에게 퍼미션 허가를 받음.
         }
 
+        myIntent = getIntent();
+        filename = myIntent.getStringExtra("URI_STR");
+
+
+
+
+
         progressBar=new ProgressDialog(MP3Download.this);
         progressBar.setMessage("다운로드중");
         progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progressBar.setIndeterminate(true);
         progressBar.setCancelable(true);
 
+        vv = (VideoView)findViewById(R.id.viView);
         Button button = (Button) findViewById(R.id.btnDown);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {
-                final String fileURL = "http://52.78.159.170:3000/uploads/1530243265582Get_Outside (mp3cut.net).mp3";
+                final String fileURL = filename;
 
                 path= Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-                outputFile= new File(path, "1530243265582Get_Outside (mp3cut.net).mp3"); //파일명까지 포함함 경로의 File 객체 생성
-
+                outputFile= new File(path, filename); //파일명까지 포함함 경로의 File 객체 생성
                 if (outputFile.exists()) { //이미 다운로드 되어 있는 경우
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(MP3Download.this);
@@ -97,6 +109,7 @@ public class MP3Download extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog,
                                                     int which) {
                                     Toast.makeText(getApplicationContext(),"기존 파일을 플레이합니다.",Toast.LENGTH_LONG).show();
+                                    playVideo(outputFile.getPath());
                                 }
                             });
                     builder.setPositiveButton("예",
@@ -151,7 +164,7 @@ public class MP3Download extends AppCompatActivity {
             //다시 파워버튼 누르면 그동안 다운로드가 진행되고 있게 됩니다.
             PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
             mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, getClass().getName());
-            mWakeLock.acquire();
+            //mWakeLock.acquire();
 
             progressBar.show();
         }
@@ -179,7 +192,7 @@ public class MP3Download extends AppCompatActivity {
                 input = new BufferedInputStream(url.openStream(), 8192);
 
                 path= Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-                outputFile= new File(path, "1530243265582Get_Outside (mp3cut.net).mp3"); //파일명까지 포함함 경로의 File 객체 생성
+                outputFile= new File(path, filename); //파일명까지 포함함 경로의 File 객체 생성
 
                 // SD카드에 저장하기 위한 Output stream
                 output = new FileOutputStream(outputFile);
@@ -225,7 +238,7 @@ public class MP3Download extends AppCompatActivity {
                 } catch (IOException ignored) {
                 }
 
-                mWakeLock.release();
+                //mWakeLock.release();
 
             }
             return FileSize;
@@ -258,7 +271,7 @@ public class MP3Download extends AppCompatActivity {
                 mediaScanIntent.setData(Uri.fromFile(outputFile));
                 sendBroadcast(mediaScanIntent);
 
-
+                playVideo(outputFile.getPath());
             }
             else
                 Toast.makeText(getApplicationContext(), "다운로드 에러", Toast.LENGTH_LONG).show();
@@ -311,5 +324,17 @@ public class MP3Download extends AppCompatActivity {
         myDialog.show();
     }
 
-
+    private void playVideo(String path) {
+        Uri videoUri = Uri.fromFile(new File(path));
+        Intent videoIntent = new Intent(Intent.ACTION_VIEW);
+        videoIntent.setDataAndType(videoUri, "video/*");
+        MediaController mc = new MediaController(this);
+        vv.setMediaController(mc);
+        vv.setVideoPath(path);
+        vv.requestFocus();
+        vv.start();
+//        if (videoIntent.resolveActivity(getPackageManager()) != null) {
+//            startActivity(Intent.createChooser(videoIntent, null));
+//        }
+    }
 }

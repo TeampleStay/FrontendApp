@@ -149,9 +149,9 @@ public class PostActivity extends AppCompatActivity {
 
 
                         //Go to MP3Download Page
-                       /* Intent newIntent = new Intent(PostActivity.this, MP3Download.class);
+                       Intent newIntent = new Intent(PostActivity.this, MP3Download.class);
                         newIntent.putExtra("URI_STR",actualOutput);
-                        startActivity(newIntent);*/
+                        startActivity(newIntent);
 
                 }catch (Exception e){
                     e.printStackTrace();
