@@ -152,6 +152,8 @@ public class PostActivity extends AppCompatActivity {
                        Intent newIntent = new Intent(PostActivity.this, MP3Download.class);
                         newIntent.putExtra("URI_STR",actualOutput);
                         startActivity(newIntent);
+                        overridePendingTransition(R.anim.anim_slide_down, R.anim.anim_slide_down);
+                        finish();
 
                 }catch (Exception e){
                     e.printStackTrace();

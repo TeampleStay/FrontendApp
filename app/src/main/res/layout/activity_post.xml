@@ -5,14 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PostActivity">
+    tools:context=".PostActivity"
+    android:background="@mipmap/loading_1">
 
 
     <Button
         android:id="@+id/btn_post"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="post"
+        android:background="#00ff0000"
         />
 
     <TextView

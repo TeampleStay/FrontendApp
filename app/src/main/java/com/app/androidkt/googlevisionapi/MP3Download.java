@@ -39,6 +39,7 @@ public class MP3Download extends AppCompatActivity {
     private File outputFile; //파일명까지 포함한 경로
     private File path;//디렉토리경로
     String filename= null;
+    String fileURL = null;
     VideoView vv;
 
     private boolean hasPermissions(String[] permissions) {
@@ -78,8 +79,15 @@ public class MP3Download extends AppCompatActivity {
         }
 
         myIntent = getIntent();
-        filename = myIntent.getStringExtra("URI_STR");
+        fileURL = myIntent.getStringExtra("URI_STR");
+        /* NEED URL STRING CUT FILE NAME */
 
+        //http://52.78.159.170:3000/uploads/b.mp4
+        String tmp = fileURL;
+        filename = fileURL.replace("http://52.78.159.170:3000/uploads/", "");
+        fileURL = tmp;
+        System.out.println("FILENAME : " + filename + ", FILEURL : " + fileURL);
+        /*                               */
 
 
 
@@ -92,10 +100,19 @@ public class MP3Download extends AppCompatActivity {
 
         vv = (VideoView)findViewById(R.id.viView);
         Button button = (Button) findViewById(R.id.btnDown);
+        Button homeBtn = (Button) findViewById(R.id.btnHome);
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)
+            {
+                startActivity(new Intent(MP3Download.this, MainActivity.class));
+                overridePendingTransition(R.anim.anim_slide_down, R.anim.anim_slide_down);
+                finish();
+            }
+        });
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {
-                final String fileURL = filename;
+                final String fileURL = "http://52.78.159.170:3000/uploads/" + filename;
 
                 path= Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
                 outputFile= new File(path, filename); //파일명까지 포함함 경로의 File 객체 생성

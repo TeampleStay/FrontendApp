@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private static final int PERMISSION_REQUEST_CODE = 1;
     String[] PERMISSIONS = {"android.permission.READ_EXTERNAL_STORAGE","android.permission.WRITE_EXTERNAL_STORAGE"};
 
-    private static final String CLOUD_VISION_API_KEY = "AIzaSyAeP2k96spfX9dL22JWI0U3tAPeF3aAyAY";
+    private static final String CLOUD_VISION_API_KEY = "AIzaSyDYeXKKaqev24bVMqH9tGfI5pjO7gdb-Fc";
 
     @BindView(R.id.takePicture)
     Button takePicture;
@@ -306,7 +306,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         annotateImageRequests.add(annotateImageReq);
 
 */
-     for(int i =0 ; i<bitmaps.size(); i++){
+
+     for(int i =0 ; i<1; i++){
          AnnotateImageRequest annotateImageReq = new AnnotateImageRequest();
          annotateImageReq.setFeatures(featureList);
          annotateImageReq.setImage(getImageEncodeImage(bitmaps.get(i))); //bitmap:카메라에서 찍은사진
