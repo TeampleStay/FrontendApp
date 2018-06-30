@@ -53,7 +53,10 @@ import com.zhihu.matisse.filter.Filter;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URI;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -95,6 +98,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private Bitmap bitmap;
 
     private int cnt;
+    public List<Bitmap>bitmaps;
+    private String url = "http://52.78.159.170:3000/upload/photos";
 
     public List<Uri> mSelected;
 
@@ -184,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onActivityResult(int requestCode, int resultCode,
                                     Intent data) {
         //비트맵리스트를 만든다
-        List<Bitmap>bitmaps = new ArrayList<>();
+        bitmaps = new ArrayList<>();
 
         if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK) {
             bitmap = (Bitmap) data.getExtras().get("data"); //사진을 받아온다
@@ -193,6 +198,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             //1개의 비트맵으로 비트맵리스트에 넣어준다
             //비트맵리스트를 만든다
             bitmaps.add(bitmap);
+            SendHttpRequestTask t = new SendHttpRequestTask();
+            t.execute(url);
             callCloudVision(bitmaps, feature);
 
             cnt = 1;
@@ -221,7 +228,51 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
               Log.d("superdroid","selected : "+ selected_photos.get(i).toString());
             }*/
 // 여기서 이제 gcp 를 실행시켜야지. 비트맵 리스트를 넘겨줘야지.
+            SendHttpRequestTask t = new SendHttpRequestTask();
+            t.execute(url);
             callCloudVision(bitmaps, feature);
+        }
+    }
+
+
+    private class SendHttpRequestTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            String url = params[0];
+            Log.d("superdroid","11");
+            try {
+                HttpClient client = new HttpClient(url);
+                client.connectForMultipart();
+                Log.d("superdroid","22");
+                for(int i=0; i<bitmaps.size(); i++) {
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    //ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    Bitmap tempBitmap = bitmaps.get(i);
+                    //Bitmap b = BitmapFactory.decodeResource(MainActivity.this.getResources(), R.drawable.logo);
+                    tempBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                    //b.compress(Bitmap.CompressFormat.PNG, 0, baos);
+                    byte[] imageBytes = baos.toByteArray();
+                    Log.d("superdroid","33");
+                    client.addFilePart("photo", "photo.jpeg", imageBytes);
+                    Log.d("superdroid","44");
+                }
+                Log.d("superdroid","55");
+                client.finishMultipart();
+                Log.d("superdroid","66");
+                String data = client.getResponse();
+                Log.d("superdroid","77");
+            }
+            catch(Throwable t) {
+                t.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String data) {
+            Log.i("superdroid", "onPostExecute: success");
         }
     }
 
@@ -270,10 +321,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
         Log.d("seolhee","phase2");
-
-
-
-
 
         new AsyncTask<Object, Void, String>() {
             @Override

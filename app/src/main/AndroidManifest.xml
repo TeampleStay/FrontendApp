@@ -22,9 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".PostActivity"/>
-        <activity android:name=".MP3Download"/>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".PostActivity" />
+        <activity android:name=".MP3Download" />
     </application>
 
 </manifest>
