@@ -14,7 +14,7 @@ It recommends music by labeling each photo using google vision api and analyzing
 [Presentation video]()
 
 
-## Technical supprot
+## Technical Support
 
 Label images using [Google Cloud Vision API](https://cloud.google.com/vision/)
 
